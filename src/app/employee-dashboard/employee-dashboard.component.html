@@ -1,0 +1,139 @@
+<div>
+  <nav class="navbar navbar-ligth bg-primary">
+    <div class="container-fluid">
+        <h1 style="color: aliceblue;"> Crud Angular</h1>
+        <div class="d-flex"></div>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#NuevoEmpleado"  >Agregar Empleado</button>
+    </div>
+</nav>  
+</div>
+<div>
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Empleado ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Telefono</th>
+                <th>Salario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>juan</td>
+                <td>Sanchez</td>
+                <td>juan1@gmail.com</td>
+                <td>7224650299</td>
+                <td>$6500</td>
+                <td>
+                    <button class="btn btn-warning">Editar</button>
+                    <button class="btn btn-danger mx-3">Eliminar</button>
+                </td>
+            </tr>
+            <tr *ngFor="let row of employeeData">
+              <td>{{row.id}}</td>
+              <td>{{row.firstName}}</td>
+              <td>{{row.lastName}}</td>
+              <td>{{row.email}}</td>
+              <td>{{row.mobile}}</td>
+              <td>{{row.salary}}</td>
+              <td>
+                <button (click)="onEdit(row)"  type="button" data-bs-toggle="modal" data-bs-target="#UpdateEmpleado"class="btn btn-warning">Editar</button>
+                <button (click)="deleteEmployee(row)" class="btn btn-danger mx-3">Eliminar</button>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Button trigger modal -->
+  <!-- Modal -->
+  <div class="modal fade" id="NuevoEmpleado" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Agregar Empleado</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValue">
+                <div class="mb-3">
+                  <label for="exampleInput" class="form-label">Nombre</label>
+                  <input type="text" formControlName="firstName"  class="form-control" id="exampleInputNombre"  >
+                  
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInput" class="form-label">Apellidos</label>
+                  <input type="text"formControlName="lastName"  class="form-control" id="exampleInputApellidos" >
+                  
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInput" class="form-label">Correo</label>
+                    <input type="email"formControlName="email"  class="form-control" id="exampleInputEmail" r >
+                    
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInput" class="form-label">Telefono</label>
+                    <input type="number" formControlName="mobile" class="form-control" id="exampleInputTelefono">
+                    
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInput" class="form-label">Salario</label>
+                    <input type="number"formControlName="salary"  class="form-control" id="exampleInputSalario" >
+                  </div>
+              </form>
+              <div class="modal-footer">
+          <button type="button" id="cancel"class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" (click)="postEmployeeDetails()" class="btn btn-primary">Guardar</button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- Modal actualizar -->
+   <div class="modal fade" id="UpdateEmpleado" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Agregar Empleado</h5>
+          <button type="button" (click)="reset()"class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValue">
+                <div class="mb-3">
+                  <label for="exampleInput" class="form-label">Nombre</label>
+                  <input type="text" formControlName="firstName"  class="form-control" id="exampleInputNombre"  >
+                  
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInput" class="form-label">Apellidos</label>
+                  <input type="text"formControlName="lastName"  class="form-control" id="exampleInputApellidos" >
+                  
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInput" class="form-label">Correo</label>
+                    <input type="email"formControlName="email"  class="form-control" id="exampleInputEmail" r >
+                    
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInput" class="form-label">Telefono</label>
+                    <input type="number" formControlName="mobile" class="form-control" id="exampleInputTelefono">
+                    
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInput" class="form-label">Salario</label>
+                    <input type="number"formControlName="salary"  class="form-control" id="exampleInputSalario" >
+                  </div>
+              </form>
+              <div class="modal-footer">
+          <button type="button" (click)="reset()" id="cancel"class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" (click)="updateEmployeeDetails()" class="btn btn-primary">Actualizar</button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 

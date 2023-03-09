@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "firstName": "Adolfo",
+      "lastName": "Pomposo",
+      "email": "pompo@gmail.com",
+      "mobile": 222020123,
+      "salary": 1234124
+    },
+    {
+      "id": 2,
+      "firstName": "Adolfo",
+      "lastName": "pecas",
+      "email": "pomposo@gmail",
+      "mobile": 6567,
+      "salary": 675
+    },
+    {
+      "id": 3,
+      "firstName": "karen",
+      "lastName": "mondra",
+      "email": "k@gmail.com",
+      "mobile": 1231,
+      "salary": 1239
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
